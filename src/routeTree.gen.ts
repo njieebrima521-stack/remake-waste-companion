@@ -10,33 +10,656 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MainRouteImport } from './routes/_main'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as WelcomeRouteImport } from './routes/welcome'
+import { Route as MainBookRouteImport } from './routes/_main.book'
+import { Route as MainCollectorDemoRouteImport } from './routes/_main.collector-demo'
+import { Route as MainGeneralRouteImport } from './routes/_main.general'
+import { Route as MainHomeRouteImport } from './routes/_main.home'
+import { Route as MainNotificationsRouteImport } from './routes/_main.notifications'
+import { Route as MainScanRouteImport } from './routes/_main.scan'
+import { Route as MainWalletRouteImport } from './routes/_main.wallet'
+import { Route as CollectorIndexRouteImport } from './routes/collector.index'
+import { Route as CollectorAppRouteImport } from './routes/collector._app'
+import { Route as CollectorRegisterRouteImport } from './routes/collector.register'
+import { Route as CollectorStatusRouteImport } from './routes/collector.status'
+import { Route as MainBookedIdRouteImport } from './routes/_main.booked.$id'
+import { Route as MainCollectIndexRouteImport } from './routes/_main.collect.index'
+import { Route as MainCollectUnsureRouteImport } from './routes/_main.collect.unsure'
+import { Route as MainGuideIndexRouteImport } from './routes/_main.guide.index'
+import { Route as MainGuideMaterialRouteImport } from './routes/_main.guide.$material'
+import { Route as MainPickupsIndexRouteImport } from './routes/_main.pickups.index'
+import { Route as MainPickupsIdRouteImport } from './routes/_main.pickups.$id'
+import { Route as MainPickupsHistoryRouteImport } from './routes/_main.pickups.history'
+import { Route as MainProfileIndexRouteImport } from './routes/_main.profile.index'
+import { Route as MainProfileAddressesRouteImport } from './routes/_main.profile.addresses'
+import { Route as MainProfileEditRouteImport } from './routes/_main.profile.edit'
+import { Route as MainProfileFaqRouteImport } from './routes/_main.profile.faq'
+import { Route as MainProfileHelpRouteImport } from './routes/_main.profile.help'
+import { Route as MainProfileLanguageRouteImport } from './routes/_main.profile.language'
+import { Route as MainProfileNotificationsRouteImport } from './routes/_main.profile.notifications'
+import { Route as MainProfilePrivacyRouteImport } from './routes/_main.profile.privacy'
+import { Route as MainProfileTermsRouteImport } from './routes/_main.profile.terms'
+import { Route as MainRedemptionsIndexRouteImport } from './routes/_main.redemptions.index'
+import { Route as MainRedemptionsIdRouteImport } from './routes/_main.redemptions.$id'
+import { Route as MainRewardsIndexRouteImport } from './routes/_main.rewards.index'
+import { Route as MainRewardsIdRouteImport } from './routes/_main.rewards.$id'
+import { Route as CollectorAppHistoryRouteImport } from './routes/collector._app.history'
+import { Route as CollectorAppHomeRouteImport } from './routes/collector._app.home'
+import { Route as CollectorAppNotificationsRouteImport } from './routes/collector._app.notifications'
+import { Route as CollectorAppScanRouteImport } from './routes/collector._app.scan'
+import { Route as CollectorAppThresholdsRouteImport } from './routes/collector._app.thresholds'
+import { Route as CollectorAppProfileIndexRouteImport } from './routes/collector._app.profile.index'
+import { Route as CollectorAppProfileEditRouteImport } from './routes/collector._app.profile.edit'
+import { Route as CollectorAppRequestsIndexRouteImport } from './routes/collector._app.requests.index'
+import { Route as CollectorAppRequestsIdRouteImport } from './routes/collector._app.requests.$id'
+import { Route as CollectorAppRoutesIndexRouteImport } from './routes/collector._app.routes.index'
+import { Route as CollectorAppRoutesIdRouteImport } from './routes/collector._app.routes.$id'
+import { Route as CollectorAppVerifyIndexRouteImport } from './routes/collector._app.verify.index'
+import { Route as CollectorAppVerifyIdRouteImport } from './routes/collector._app.verify.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MainRoute = MainRouteImport.update({
+  id: '/_main',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MainBookRoute = MainBookRouteImport.update({
+  id: '/book',
+  path: '/book',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainCollectorDemoRoute = MainCollectorDemoRouteImport.update({
+  id: '/collector-demo',
+  path: '/collector-demo',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainGeneralRoute = MainGeneralRouteImport.update({
+  id: '/general',
+  path: '/general',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainHomeRoute = MainHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainNotificationsRoute = MainNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainScanRoute = MainScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainWalletRoute = MainWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => MainRoute,
+} as any)
+const CollectorIndexRoute = CollectorIndexRouteImport.update({
+  id: '/collector/',
+  path: '/collector/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectorAppRoute = CollectorAppRouteImport.update({
+  id: '/collector/_app',
+  path: '/collector',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectorRegisterRoute = CollectorRegisterRouteImport.update({
+  id: '/collector/register',
+  path: '/collector/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectorStatusRoute = CollectorStatusRouteImport.update({
+  id: '/collector/status',
+  path: '/collector/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MainBookedIdRoute = MainBookedIdRouteImport.update({
+  id: '/booked/$id',
+  path: '/booked/$id',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainCollectIndexRoute = MainCollectIndexRouteImport.update({
+  id: '/collect/',
+  path: '/collect/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainCollectUnsureRoute = MainCollectUnsureRouteImport.update({
+  id: '/collect/unsure',
+  path: '/collect/unsure',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainGuideIndexRoute = MainGuideIndexRouteImport.update({
+  id: '/guide/',
+  path: '/guide/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainGuideMaterialRoute = MainGuideMaterialRouteImport.update({
+  id: '/guide/$material',
+  path: '/guide/$material',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainPickupsIndexRoute = MainPickupsIndexRouteImport.update({
+  id: '/pickups/',
+  path: '/pickups/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainPickupsIdRoute = MainPickupsIdRouteImport.update({
+  id: '/pickups/$id',
+  path: '/pickups/$id',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainPickupsHistoryRoute = MainPickupsHistoryRouteImport.update({
+  id: '/pickups/history',
+  path: '/pickups/history',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileIndexRoute = MainProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileAddressesRoute = MainProfileAddressesRouteImport.update({
+  id: '/profile/addresses',
+  path: '/profile/addresses',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileEditRoute = MainProfileEditRouteImport.update({
+  id: '/profile/edit',
+  path: '/profile/edit',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileFaqRoute = MainProfileFaqRouteImport.update({
+  id: '/profile/faq',
+  path: '/profile/faq',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileHelpRoute = MainProfileHelpRouteImport.update({
+  id: '/profile/help',
+  path: '/profile/help',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileLanguageRoute = MainProfileLanguageRouteImport.update({
+  id: '/profile/language',
+  path: '/profile/language',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileNotificationsRoute =
+  MainProfileNotificationsRouteImport.update({
+    id: '/profile/notifications',
+    path: '/profile/notifications',
+    getParentRoute: () => MainRoute,
+  } as any)
+const MainProfilePrivacyRoute = MainProfilePrivacyRouteImport.update({
+  id: '/profile/privacy',
+  path: '/profile/privacy',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainProfileTermsRoute = MainProfileTermsRouteImport.update({
+  id: '/profile/terms',
+  path: '/profile/terms',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainRedemptionsIndexRoute = MainRedemptionsIndexRouteImport.update({
+  id: '/redemptions/',
+  path: '/redemptions/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainRedemptionsIdRoute = MainRedemptionsIdRouteImport.update({
+  id: '/redemptions/$id',
+  path: '/redemptions/$id',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainRewardsIndexRoute = MainRewardsIndexRouteImport.update({
+  id: '/rewards/',
+  path: '/rewards/',
+  getParentRoute: () => MainRoute,
+} as any)
+const MainRewardsIdRoute = MainRewardsIdRouteImport.update({
+  id: '/rewards/$id',
+  path: '/rewards/$id',
+  getParentRoute: () => MainRoute,
+} as any)
+const CollectorAppHistoryRoute = CollectorAppHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppHomeRoute = CollectorAppHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppNotificationsRoute =
+  CollectorAppNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => CollectorAppRoute,
+  } as any)
+const CollectorAppScanRoute = CollectorAppScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppThresholdsRoute = CollectorAppThresholdsRouteImport.update({
+  id: '/thresholds',
+  path: '/thresholds',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppProfileIndexRoute =
+  CollectorAppProfileIndexRouteImport.update({
+    id: '/profile/',
+    path: '/profile/',
+    getParentRoute: () => CollectorAppRoute,
+  } as any)
+const CollectorAppProfileEditRoute = CollectorAppProfileEditRouteImport.update({
+  id: '/profile/edit',
+  path: '/profile/edit',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppRequestsIndexRoute =
+  CollectorAppRequestsIndexRouteImport.update({
+    id: '/requests/',
+    path: '/requests/',
+    getParentRoute: () => CollectorAppRoute,
+  } as any)
+const CollectorAppRequestsIdRoute = CollectorAppRequestsIdRouteImport.update({
+  id: '/requests/$id',
+  path: '/requests/$id',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppRoutesIndexRoute = CollectorAppRoutesIndexRouteImport.update({
+  id: '/routes/',
+  path: '/routes/',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppRoutesIdRoute = CollectorAppRoutesIdRouteImport.update({
+  id: '/routes/$id',
+  path: '/routes/$id',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppVerifyIndexRoute = CollectorAppVerifyIndexRouteImport.update({
+  id: '/verify/',
+  path: '/verify/',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
+const CollectorAppVerifyIdRoute = CollectorAppVerifyIdRouteImport.update({
+  id: '/verify/$id',
+  path: '/verify/$id',
+  getParentRoute: () => CollectorAppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/welcome': typeof WelcomeRoute
+  '/book': typeof MainBookRoute
+  '/collector-demo': typeof MainCollectorDemoRoute
+  '/general': typeof MainGeneralRoute
+  '/home': typeof MainHomeRoute
+  '/notifications': typeof MainNotificationsRoute
+  '/scan': typeof MainScanRoute
+  '/wallet': typeof MainWalletRoute
+  '/collector': typeof CollectorAppRouteWithChildren
+  '/collector/register': typeof CollectorRegisterRoute
+  '/collector/status': typeof CollectorStatusRoute
+  '/collector/': typeof CollectorIndexRoute
+  '/booked/$id': typeof MainBookedIdRoute
+  '/collect/unsure': typeof MainCollectUnsureRoute
+  '/guide/$material': typeof MainGuideMaterialRoute
+  '/pickups/$id': typeof MainPickupsIdRoute
+  '/pickups/history': typeof MainPickupsHistoryRoute
+  '/profile/addresses': typeof MainProfileAddressesRoute
+  '/profile/edit': typeof MainProfileEditRoute
+  '/profile/faq': typeof MainProfileFaqRoute
+  '/profile/help': typeof MainProfileHelpRoute
+  '/profile/language': typeof MainProfileLanguageRoute
+  '/profile/notifications': typeof MainProfileNotificationsRoute
+  '/profile/privacy': typeof MainProfilePrivacyRoute
+  '/profile/terms': typeof MainProfileTermsRoute
+  '/redemptions/$id': typeof MainRedemptionsIdRoute
+  '/rewards/$id': typeof MainRewardsIdRoute
+  '/collector/history': typeof CollectorAppHistoryRoute
+  '/collector/home': typeof CollectorAppHomeRoute
+  '/collector/notifications': typeof CollectorAppNotificationsRoute
+  '/collector/scan': typeof CollectorAppScanRoute
+  '/collector/thresholds': typeof CollectorAppThresholdsRoute
+  '/collect/': typeof MainCollectIndexRoute
+  '/guide/': typeof MainGuideIndexRoute
+  '/pickups/': typeof MainPickupsIndexRoute
+  '/profile/': typeof MainProfileIndexRoute
+  '/redemptions/': typeof MainRedemptionsIndexRoute
+  '/rewards/': typeof MainRewardsIndexRoute
+  '/collector/profile/edit': typeof CollectorAppProfileEditRoute
+  '/collector/requests/$id': typeof CollectorAppRequestsIdRoute
+  '/collector/routes/$id': typeof CollectorAppRoutesIdRoute
+  '/collector/verify/$id': typeof CollectorAppVerifyIdRoute
+  '/collector/profile/': typeof CollectorAppProfileIndexRoute
+  '/collector/requests/': typeof CollectorAppRequestsIndexRoute
+  '/collector/routes/': typeof CollectorAppRoutesIndexRoute
+  '/collector/verify/': typeof CollectorAppVerifyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/welcome': typeof WelcomeRoute
+  '/book': typeof MainBookRoute
+  '/collector-demo': typeof MainCollectorDemoRoute
+  '/general': typeof MainGeneralRoute
+  '/home': typeof MainHomeRoute
+  '/notifications': typeof MainNotificationsRoute
+  '/scan': typeof MainScanRoute
+  '/wallet': typeof MainWalletRoute
+  '/collector': typeof CollectorIndexRoute
+  '/collector/register': typeof CollectorRegisterRoute
+  '/collector/status': typeof CollectorStatusRoute
+  '/booked/$id': typeof MainBookedIdRoute
+  '/collect/unsure': typeof MainCollectUnsureRoute
+  '/guide/$material': typeof MainGuideMaterialRoute
+  '/pickups/$id': typeof MainPickupsIdRoute
+  '/pickups/history': typeof MainPickupsHistoryRoute
+  '/profile/addresses': typeof MainProfileAddressesRoute
+  '/profile/edit': typeof MainProfileEditRoute
+  '/profile/faq': typeof MainProfileFaqRoute
+  '/profile/help': typeof MainProfileHelpRoute
+  '/profile/language': typeof MainProfileLanguageRoute
+  '/profile/notifications': typeof MainProfileNotificationsRoute
+  '/profile/privacy': typeof MainProfilePrivacyRoute
+  '/profile/terms': typeof MainProfileTermsRoute
+  '/redemptions/$id': typeof MainRedemptionsIdRoute
+  '/rewards/$id': typeof MainRewardsIdRoute
+  '/collector/history': typeof CollectorAppHistoryRoute
+  '/collector/home': typeof CollectorAppHomeRoute
+  '/collector/notifications': typeof CollectorAppNotificationsRoute
+  '/collector/scan': typeof CollectorAppScanRoute
+  '/collector/thresholds': typeof CollectorAppThresholdsRoute
+  '/collect': typeof MainCollectIndexRoute
+  '/guide': typeof MainGuideIndexRoute
+  '/pickups': typeof MainPickupsIndexRoute
+  '/profile': typeof MainProfileIndexRoute
+  '/redemptions': typeof MainRedemptionsIndexRoute
+  '/rewards': typeof MainRewardsIndexRoute
+  '/collector/profile/edit': typeof CollectorAppProfileEditRoute
+  '/collector/requests/$id': typeof CollectorAppRequestsIdRoute
+  '/collector/routes/$id': typeof CollectorAppRoutesIdRoute
+  '/collector/verify/$id': typeof CollectorAppVerifyIdRoute
+  '/collector/profile': typeof CollectorAppProfileIndexRoute
+  '/collector/requests': typeof CollectorAppRequestsIndexRoute
+  '/collector/routes': typeof CollectorAppRoutesIndexRoute
+  '/collector/verify': typeof CollectorAppVerifyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_main': typeof MainRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/verify': typeof VerifyRoute
+  '/welcome': typeof WelcomeRoute
+  '/_main/book': typeof MainBookRoute
+  '/_main/collector-demo': typeof MainCollectorDemoRoute
+  '/_main/general': typeof MainGeneralRoute
+  '/_main/home': typeof MainHomeRoute
+  '/_main/notifications': typeof MainNotificationsRoute
+  '/_main/scan': typeof MainScanRoute
+  '/_main/wallet': typeof MainWalletRoute
+  '/collector/_app': typeof CollectorAppRouteWithChildren
+  '/collector/register': typeof CollectorRegisterRoute
+  '/collector/status': typeof CollectorStatusRoute
+  '/collector/': typeof CollectorIndexRoute
+  '/_main/booked/$id': typeof MainBookedIdRoute
+  '/_main/collect/unsure': typeof MainCollectUnsureRoute
+  '/_main/guide/$material': typeof MainGuideMaterialRoute
+  '/_main/pickups/$id': typeof MainPickupsIdRoute
+  '/_main/pickups/history': typeof MainPickupsHistoryRoute
+  '/_main/profile/addresses': typeof MainProfileAddressesRoute
+  '/_main/profile/edit': typeof MainProfileEditRoute
+  '/_main/profile/faq': typeof MainProfileFaqRoute
+  '/_main/profile/help': typeof MainProfileHelpRoute
+  '/_main/profile/language': typeof MainProfileLanguageRoute
+  '/_main/profile/notifications': typeof MainProfileNotificationsRoute
+  '/_main/profile/privacy': typeof MainProfilePrivacyRoute
+  '/_main/profile/terms': typeof MainProfileTermsRoute
+  '/_main/redemptions/$id': typeof MainRedemptionsIdRoute
+  '/_main/rewards/$id': typeof MainRewardsIdRoute
+  '/collector/_app/history': typeof CollectorAppHistoryRoute
+  '/collector/_app/home': typeof CollectorAppHomeRoute
+  '/collector/_app/notifications': typeof CollectorAppNotificationsRoute
+  '/collector/_app/scan': typeof CollectorAppScanRoute
+  '/collector/_app/thresholds': typeof CollectorAppThresholdsRoute
+  '/_main/collect/': typeof MainCollectIndexRoute
+  '/_main/guide/': typeof MainGuideIndexRoute
+  '/_main/pickups/': typeof MainPickupsIndexRoute
+  '/_main/profile/': typeof MainProfileIndexRoute
+  '/_main/redemptions/': typeof MainRedemptionsIndexRoute
+  '/_main/rewards/': typeof MainRewardsIndexRoute
+  '/collector/_app/profile/edit': typeof CollectorAppProfileEditRoute
+  '/collector/_app/requests/$id': typeof CollectorAppRequestsIdRoute
+  '/collector/_app/routes/$id': typeof CollectorAppRoutesIdRoute
+  '/collector/_app/verify/$id': typeof CollectorAppVerifyIdRoute
+  '/collector/_app/profile/': typeof CollectorAppProfileIndexRoute
+  '/collector/_app/requests/': typeof CollectorAppRequestsIndexRoute
+  '/collector/_app/routes/': typeof CollectorAppRoutesIndexRoute
+  '/collector/_app/verify/': typeof CollectorAppVerifyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify'
+    | '/welcome'
+    | '/book'
+    | '/collector-demo'
+    | '/general'
+    | '/home'
+    | '/notifications'
+    | '/scan'
+    | '/wallet'
+    | '/collector'
+    | '/collector/register'
+    | '/collector/status'
+    | '/collector/'
+    | '/booked/$id'
+    | '/collect/unsure'
+    | '/guide/$material'
+    | '/pickups/$id'
+    | '/pickups/history'
+    | '/profile/addresses'
+    | '/profile/edit'
+    | '/profile/faq'
+    | '/profile/help'
+    | '/profile/language'
+    | '/profile/notifications'
+    | '/profile/privacy'
+    | '/profile/terms'
+    | '/redemptions/$id'
+    | '/rewards/$id'
+    | '/collector/history'
+    | '/collector/home'
+    | '/collector/notifications'
+    | '/collector/scan'
+    | '/collector/thresholds'
+    | '/collect/'
+    | '/guide/'
+    | '/pickups/'
+    | '/profile/'
+    | '/redemptions/'
+    | '/rewards/'
+    | '/collector/profile/edit'
+    | '/collector/requests/$id'
+    | '/collector/routes/$id'
+    | '/collector/verify/$id'
+    | '/collector/profile/'
+    | '/collector/requests/'
+    | '/collector/routes/'
+    | '/collector/verify/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify'
+    | '/welcome'
+    | '/book'
+    | '/collector-demo'
+    | '/general'
+    | '/home'
+    | '/notifications'
+    | '/scan'
+    | '/wallet'
+    | '/collector'
+    | '/collector/register'
+    | '/collector/status'
+    | '/booked/$id'
+    | '/collect/unsure'
+    | '/guide/$material'
+    | '/pickups/$id'
+    | '/pickups/history'
+    | '/profile/addresses'
+    | '/profile/edit'
+    | '/profile/faq'
+    | '/profile/help'
+    | '/profile/language'
+    | '/profile/notifications'
+    | '/profile/privacy'
+    | '/profile/terms'
+    | '/redemptions/$id'
+    | '/rewards/$id'
+    | '/collector/history'
+    | '/collector/home'
+    | '/collector/notifications'
+    | '/collector/scan'
+    | '/collector/thresholds'
+    | '/collect'
+    | '/guide'
+    | '/pickups'
+    | '/profile'
+    | '/redemptions'
+    | '/rewards'
+    | '/collector/profile/edit'
+    | '/collector/requests/$id'
+    | '/collector/routes/$id'
+    | '/collector/verify/$id'
+    | '/collector/profile'
+    | '/collector/requests'
+    | '/collector/routes'
+    | '/collector/verify'
+  id:
+    | '__root__'
+    | '/'
+    | '/_main'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/verify'
+    | '/welcome'
+    | '/_main/book'
+    | '/_main/collector-demo'
+    | '/_main/general'
+    | '/_main/home'
+    | '/_main/notifications'
+    | '/_main/scan'
+    | '/_main/wallet'
+    | '/collector/_app'
+    | '/collector/register'
+    | '/collector/status'
+    | '/collector/'
+    | '/_main/booked/$id'
+    | '/_main/collect/unsure'
+    | '/_main/guide/$material'
+    | '/_main/pickups/$id'
+    | '/_main/pickups/history'
+    | '/_main/profile/addresses'
+    | '/_main/profile/edit'
+    | '/_main/profile/faq'
+    | '/_main/profile/help'
+    | '/_main/profile/language'
+    | '/_main/profile/notifications'
+    | '/_main/profile/privacy'
+    | '/_main/profile/terms'
+    | '/_main/redemptions/$id'
+    | '/_main/rewards/$id'
+    | '/collector/_app/history'
+    | '/collector/_app/home'
+    | '/collector/_app/notifications'
+    | '/collector/_app/scan'
+    | '/collector/_app/thresholds'
+    | '/_main/collect/'
+    | '/_main/guide/'
+    | '/_main/pickups/'
+    | '/_main/profile/'
+    | '/_main/redemptions/'
+    | '/_main/rewards/'
+    | '/collector/_app/profile/edit'
+    | '/collector/_app/requests/$id'
+    | '/collector/_app/routes/$id'
+    | '/collector/_app/verify/$id'
+    | '/collector/_app/profile/'
+    | '/collector/_app/requests/'
+    | '/collector/_app/routes/'
+    | '/collector/_app/verify/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MainRoute: typeof MainRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  VerifyRoute: typeof VerifyRoute
+  WelcomeRoute: typeof WelcomeRoute
+  CollectorAppRoute: typeof CollectorAppRouteWithChildren
+  CollectorRegisterRoute: typeof CollectorRegisterRoute
+  CollectorStatusRoute: typeof CollectorStatusRoute
+  CollectorIndexRoute: typeof CollectorIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +671,478 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_main': {
+      id: '/_main'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_main/book': {
+      id: '/_main/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof MainBookRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/collector-demo': {
+      id: '/_main/collector-demo'
+      path: '/collector-demo'
+      fullPath: '/collector-demo'
+      preLoaderRoute: typeof MainCollectorDemoRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/general': {
+      id: '/_main/general'
+      path: '/general'
+      fullPath: '/general'
+      preLoaderRoute: typeof MainGeneralRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/home': {
+      id: '/_main/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof MainHomeRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/notifications': {
+      id: '/_main/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof MainNotificationsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/scan': {
+      id: '/_main/scan'
+      path: '/scan'
+      fullPath: '/scan'
+      preLoaderRoute: typeof MainScanRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/wallet': {
+      id: '/_main/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof MainWalletRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/collector/': {
+      id: '/collector/'
+      path: '/collector'
+      fullPath: '/collector/'
+      preLoaderRoute: typeof CollectorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collector/_app': {
+      id: '/collector/_app'
+      path: '/collector'
+      fullPath: '/collector'
+      preLoaderRoute: typeof CollectorAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collector/register': {
+      id: '/collector/register'
+      path: '/collector/register'
+      fullPath: '/collector/register'
+      preLoaderRoute: typeof CollectorRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collector/status': {
+      id: '/collector/status'
+      path: '/collector/status'
+      fullPath: '/collector/status'
+      preLoaderRoute: typeof CollectorStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_main/booked/$id': {
+      id: '/_main/booked/$id'
+      path: '/booked/$id'
+      fullPath: '/booked/$id'
+      preLoaderRoute: typeof MainBookedIdRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/collect/': {
+      id: '/_main/collect/'
+      path: '/collect'
+      fullPath: '/collect/'
+      preLoaderRoute: typeof MainCollectIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/collect/unsure': {
+      id: '/_main/collect/unsure'
+      path: '/collect/unsure'
+      fullPath: '/collect/unsure'
+      preLoaderRoute: typeof MainCollectUnsureRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/guide/': {
+      id: '/_main/guide/'
+      path: '/guide'
+      fullPath: '/guide/'
+      preLoaderRoute: typeof MainGuideIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/guide/$material': {
+      id: '/_main/guide/$material'
+      path: '/guide/$material'
+      fullPath: '/guide/$material'
+      preLoaderRoute: typeof MainGuideMaterialRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/pickups/': {
+      id: '/_main/pickups/'
+      path: '/pickups'
+      fullPath: '/pickups/'
+      preLoaderRoute: typeof MainPickupsIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/pickups/$id': {
+      id: '/_main/pickups/$id'
+      path: '/pickups/$id'
+      fullPath: '/pickups/$id'
+      preLoaderRoute: typeof MainPickupsIdRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/pickups/history': {
+      id: '/_main/pickups/history'
+      path: '/pickups/history'
+      fullPath: '/pickups/history'
+      preLoaderRoute: typeof MainPickupsHistoryRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/': {
+      id: '/_main/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof MainProfileIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/addresses': {
+      id: '/_main/profile/addresses'
+      path: '/profile/addresses'
+      fullPath: '/profile/addresses'
+      preLoaderRoute: typeof MainProfileAddressesRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/edit': {
+      id: '/_main/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof MainProfileEditRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/faq': {
+      id: '/_main/profile/faq'
+      path: '/profile/faq'
+      fullPath: '/profile/faq'
+      preLoaderRoute: typeof MainProfileFaqRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/help': {
+      id: '/_main/profile/help'
+      path: '/profile/help'
+      fullPath: '/profile/help'
+      preLoaderRoute: typeof MainProfileHelpRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/language': {
+      id: '/_main/profile/language'
+      path: '/profile/language'
+      fullPath: '/profile/language'
+      preLoaderRoute: typeof MainProfileLanguageRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/notifications': {
+      id: '/_main/profile/notifications'
+      path: '/profile/notifications'
+      fullPath: '/profile/notifications'
+      preLoaderRoute: typeof MainProfileNotificationsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/privacy': {
+      id: '/_main/profile/privacy'
+      path: '/profile/privacy'
+      fullPath: '/profile/privacy'
+      preLoaderRoute: typeof MainProfilePrivacyRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/profile/terms': {
+      id: '/_main/profile/terms'
+      path: '/profile/terms'
+      fullPath: '/profile/terms'
+      preLoaderRoute: typeof MainProfileTermsRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/redemptions/': {
+      id: '/_main/redemptions/'
+      path: '/redemptions'
+      fullPath: '/redemptions/'
+      preLoaderRoute: typeof MainRedemptionsIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/redemptions/$id': {
+      id: '/_main/redemptions/$id'
+      path: '/redemptions/$id'
+      fullPath: '/redemptions/$id'
+      preLoaderRoute: typeof MainRedemptionsIdRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/rewards/': {
+      id: '/_main/rewards/'
+      path: '/rewards'
+      fullPath: '/rewards/'
+      preLoaderRoute: typeof MainRewardsIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/_main/rewards/$id': {
+      id: '/_main/rewards/$id'
+      path: '/rewards/$id'
+      fullPath: '/rewards/$id'
+      preLoaderRoute: typeof MainRewardsIdRouteImport
+      parentRoute: typeof MainRoute
+    }
+    '/collector/_app/history': {
+      id: '/collector/_app/history'
+      path: '/history'
+      fullPath: '/collector/history'
+      preLoaderRoute: typeof CollectorAppHistoryRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/home': {
+      id: '/collector/_app/home'
+      path: '/home'
+      fullPath: '/collector/home'
+      preLoaderRoute: typeof CollectorAppHomeRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/notifications': {
+      id: '/collector/_app/notifications'
+      path: '/notifications'
+      fullPath: '/collector/notifications'
+      preLoaderRoute: typeof CollectorAppNotificationsRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/scan': {
+      id: '/collector/_app/scan'
+      path: '/scan'
+      fullPath: '/collector/scan'
+      preLoaderRoute: typeof CollectorAppScanRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/thresholds': {
+      id: '/collector/_app/thresholds'
+      path: '/thresholds'
+      fullPath: '/collector/thresholds'
+      preLoaderRoute: typeof CollectorAppThresholdsRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/profile/': {
+      id: '/collector/_app/profile/'
+      path: '/profile'
+      fullPath: '/collector/profile/'
+      preLoaderRoute: typeof CollectorAppProfileIndexRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/profile/edit': {
+      id: '/collector/_app/profile/edit'
+      path: '/profile/edit'
+      fullPath: '/collector/profile/edit'
+      preLoaderRoute: typeof CollectorAppProfileEditRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/requests/': {
+      id: '/collector/_app/requests/'
+      path: '/requests'
+      fullPath: '/collector/requests/'
+      preLoaderRoute: typeof CollectorAppRequestsIndexRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/requests/$id': {
+      id: '/collector/_app/requests/$id'
+      path: '/requests/$id'
+      fullPath: '/collector/requests/$id'
+      preLoaderRoute: typeof CollectorAppRequestsIdRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/routes/': {
+      id: '/collector/_app/routes/'
+      path: '/routes'
+      fullPath: '/collector/routes/'
+      preLoaderRoute: typeof CollectorAppRoutesIndexRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/routes/$id': {
+      id: '/collector/_app/routes/$id'
+      path: '/routes/$id'
+      fullPath: '/collector/routes/$id'
+      preLoaderRoute: typeof CollectorAppRoutesIdRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/verify/': {
+      id: '/collector/_app/verify/'
+      path: '/verify'
+      fullPath: '/collector/verify/'
+      preLoaderRoute: typeof CollectorAppVerifyIndexRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
+    '/collector/_app/verify/$id': {
+      id: '/collector/_app/verify/$id'
+      path: '/verify/$id'
+      fullPath: '/collector/verify/$id'
+      preLoaderRoute: typeof CollectorAppVerifyIdRouteImport
+      parentRoute: typeof CollectorAppRoute
+    }
   }
 }
 
+interface MainRouteChildren {
+  MainBookRoute: typeof MainBookRoute
+  MainCollectorDemoRoute: typeof MainCollectorDemoRoute
+  MainGeneralRoute: typeof MainGeneralRoute
+  MainHomeRoute: typeof MainHomeRoute
+  MainNotificationsRoute: typeof MainNotificationsRoute
+  MainScanRoute: typeof MainScanRoute
+  MainWalletRoute: typeof MainWalletRoute
+  MainBookedIdRoute: typeof MainBookedIdRoute
+  MainCollectUnsureRoute: typeof MainCollectUnsureRoute
+  MainGuideMaterialRoute: typeof MainGuideMaterialRoute
+  MainPickupsIdRoute: typeof MainPickupsIdRoute
+  MainPickupsHistoryRoute: typeof MainPickupsHistoryRoute
+  MainProfileAddressesRoute: typeof MainProfileAddressesRoute
+  MainProfileEditRoute: typeof MainProfileEditRoute
+  MainProfileFaqRoute: typeof MainProfileFaqRoute
+  MainProfileHelpRoute: typeof MainProfileHelpRoute
+  MainProfileLanguageRoute: typeof MainProfileLanguageRoute
+  MainProfileNotificationsRoute: typeof MainProfileNotificationsRoute
+  MainProfilePrivacyRoute: typeof MainProfilePrivacyRoute
+  MainProfileTermsRoute: typeof MainProfileTermsRoute
+  MainRedemptionsIdRoute: typeof MainRedemptionsIdRoute
+  MainRewardsIdRoute: typeof MainRewardsIdRoute
+  MainCollectIndexRoute: typeof MainCollectIndexRoute
+  MainGuideIndexRoute: typeof MainGuideIndexRoute
+  MainPickupsIndexRoute: typeof MainPickupsIndexRoute
+  MainProfileIndexRoute: typeof MainProfileIndexRoute
+  MainRedemptionsIndexRoute: typeof MainRedemptionsIndexRoute
+  MainRewardsIndexRoute: typeof MainRewardsIndexRoute
+}
+
+const MainRouteChildren: MainRouteChildren = {
+  MainBookRoute: MainBookRoute,
+  MainCollectorDemoRoute: MainCollectorDemoRoute,
+  MainGeneralRoute: MainGeneralRoute,
+  MainHomeRoute: MainHomeRoute,
+  MainNotificationsRoute: MainNotificationsRoute,
+  MainScanRoute: MainScanRoute,
+  MainWalletRoute: MainWalletRoute,
+  MainBookedIdRoute: MainBookedIdRoute,
+  MainCollectUnsureRoute: MainCollectUnsureRoute,
+  MainGuideMaterialRoute: MainGuideMaterialRoute,
+  MainPickupsIdRoute: MainPickupsIdRoute,
+  MainPickupsHistoryRoute: MainPickupsHistoryRoute,
+  MainProfileAddressesRoute: MainProfileAddressesRoute,
+  MainProfileEditRoute: MainProfileEditRoute,
+  MainProfileFaqRoute: MainProfileFaqRoute,
+  MainProfileHelpRoute: MainProfileHelpRoute,
+  MainProfileLanguageRoute: MainProfileLanguageRoute,
+  MainProfileNotificationsRoute: MainProfileNotificationsRoute,
+  MainProfilePrivacyRoute: MainProfilePrivacyRoute,
+  MainProfileTermsRoute: MainProfileTermsRoute,
+  MainRedemptionsIdRoute: MainRedemptionsIdRoute,
+  MainRewardsIdRoute: MainRewardsIdRoute,
+  MainCollectIndexRoute: MainCollectIndexRoute,
+  MainGuideIndexRoute: MainGuideIndexRoute,
+  MainPickupsIndexRoute: MainPickupsIndexRoute,
+  MainProfileIndexRoute: MainProfileIndexRoute,
+  MainRedemptionsIndexRoute: MainRedemptionsIndexRoute,
+  MainRewardsIndexRoute: MainRewardsIndexRoute,
+}
+
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
+
+interface CollectorAppRouteChildren {
+  CollectorAppHistoryRoute: typeof CollectorAppHistoryRoute
+  CollectorAppHomeRoute: typeof CollectorAppHomeRoute
+  CollectorAppNotificationsRoute: typeof CollectorAppNotificationsRoute
+  CollectorAppScanRoute: typeof CollectorAppScanRoute
+  CollectorAppThresholdsRoute: typeof CollectorAppThresholdsRoute
+  CollectorAppProfileEditRoute: typeof CollectorAppProfileEditRoute
+  CollectorAppRequestsIdRoute: typeof CollectorAppRequestsIdRoute
+  CollectorAppRoutesIdRoute: typeof CollectorAppRoutesIdRoute
+  CollectorAppVerifyIdRoute: typeof CollectorAppVerifyIdRoute
+  CollectorAppProfileIndexRoute: typeof CollectorAppProfileIndexRoute
+  CollectorAppRequestsIndexRoute: typeof CollectorAppRequestsIndexRoute
+  CollectorAppRoutesIndexRoute: typeof CollectorAppRoutesIndexRoute
+  CollectorAppVerifyIndexRoute: typeof CollectorAppVerifyIndexRoute
+}
+
+const CollectorAppRouteChildren: CollectorAppRouteChildren = {
+  CollectorAppHistoryRoute: CollectorAppHistoryRoute,
+  CollectorAppHomeRoute: CollectorAppHomeRoute,
+  CollectorAppNotificationsRoute: CollectorAppNotificationsRoute,
+  CollectorAppScanRoute: CollectorAppScanRoute,
+  CollectorAppThresholdsRoute: CollectorAppThresholdsRoute,
+  CollectorAppProfileEditRoute: CollectorAppProfileEditRoute,
+  CollectorAppRequestsIdRoute: CollectorAppRequestsIdRoute,
+  CollectorAppRoutesIdRoute: CollectorAppRoutesIdRoute,
+  CollectorAppVerifyIdRoute: CollectorAppVerifyIdRoute,
+  CollectorAppProfileIndexRoute: CollectorAppProfileIndexRoute,
+  CollectorAppRequestsIndexRoute: CollectorAppRequestsIndexRoute,
+  CollectorAppRoutesIndexRoute: CollectorAppRoutesIndexRoute,
+  CollectorAppVerifyIndexRoute: CollectorAppVerifyIndexRoute,
+}
+
+const CollectorAppRouteWithChildren = CollectorAppRoute._addFileChildren(
+  CollectorAppRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MainRoute: MainRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
+  LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  VerifyRoute: VerifyRoute,
+  WelcomeRoute: WelcomeRoute,
+  CollectorAppRoute: CollectorAppRouteWithChildren,
+  CollectorRegisterRoute: CollectorRegisterRoute,
+  CollectorStatusRoute: CollectorStatusRoute,
+  CollectorIndexRoute: CollectorIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

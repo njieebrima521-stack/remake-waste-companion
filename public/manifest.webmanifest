@@ -1,0 +1,14 @@
+{
+  "name": "Remake",
+  "short_name": "Remake",
+  "description": "Book waste pickups, sort recyclables and earn Green Coins in The Gambia.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#00c14b",
+  "theme_color": "#00c14b",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

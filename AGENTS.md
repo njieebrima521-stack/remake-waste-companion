@@ -28,3 +28,16 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- App state lives in `src/lib/remake/store.ts` (one external store persisted to localStorage) and pure rules in `src/lib/remake/logic.ts`; screens read via `useApp` and write via `actions` — keeps every screen in sync without a backend.
+- Signed-in screens are `src/routes/_main.*.tsx` under the `_main` gate; each screen is a phone-sized `Screen`/`ScreenHeader`/`ScreenBody`/`ScreenFooter` from `components/remake/Screen.tsx` — consistent mobile layout.
+- Recyclable (`/book`) and general (`/general`) bookings share step components from `components/remake/booking.tsx` and keep progress in the store `draft` — scan results carry into booking and edits don't duplicate.
+- Business rules (coin release, separation, slots, redemption) are covered in `src/test/remake-rules.test.ts`; update it when a rule changes.
+- Collector eligibility (`eligibleCollectors`/`collectorAccepts`) and collection QR handling (`qrPayload`/`resolveScan`/`confirmCollection`) live only in `src/lib/remake/logic.ts`; booking, reassignment, auto-assignment and the `/collector` scanner demo all call them — one matching rule everywhere.
+- Collector-side rules (request visibility, readiness/minimums, accept/reject/propose, routes, confirmation, material verification, history, registration) live only in `src/lib/remake/collector.ts` as pure functions over AppState; screens call them through `actions` in the store — keeps one rule set for every collector screen and testable in `src/test/collector-rules.test.ts`.
+- The collector app is under `/collector/*`; approved-only screens sit under the pathless `src/routes/collector._app.tsx` gate and use `useMe()` from `components/collector/ui.tsx` — unapproved/suspended accounts can never reach assignments.
+- The booking QR scanner is one component (`components/collector/Scanner.tsx`) shared by the collector app and the resident demo at `/collector-demo` — no duplicate scanner logic.
+- Resident screens list bookings via `residentPickups()` so institutional collector requests never appear in the resident app.
+
