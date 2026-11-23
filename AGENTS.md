@@ -41,3 +41,4 @@ use the editor.
 - The booking QR scanner is one component (`components/collector/Scanner.tsx`) shared by the collector app and the resident demo at `/collector-demo` — no duplicate scanner logic.
 - Resident screens list bookings via `residentPickups()` so institutional collector requests never appear in the resident app.
 
+- Sign-up (`/register`) asks resident vs collector via `?role=`; the collector path renders the shared `CollectorSignup` wizard (also used by `/collector/register`) — one collector application flow.
