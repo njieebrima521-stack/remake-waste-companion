@@ -42,7 +42,7 @@ function PickupHistory() {
             { label: "Bags", value: bags },
             { label: "Coins earned", value: coins(earned), coin: true },
           ].map((s) => (
-            <div key={s.label} className="rounded-3xl bg-card p-3.5 text-center shadow-card">
+            <div key={s.label} className="rounded-2xl border border-border bg-card p-3.5 text-center shadow-card">
               <p className="flex items-center justify-center gap-1 font-display text-2xl font-bold tabular-nums">
                 {s.value} {s.coin && <CoinIcon className="size-4 text-[8px]" />}
               </p>

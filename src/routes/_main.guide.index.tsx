@@ -58,7 +58,7 @@ function Guide() {
                 key={m}
                 to="/guide/$material"
                 params={{ material: m }}
-                className="flex items-center gap-4 rounded-3xl bg-card p-3 shadow-card active:scale-[0.99]"
+                className="flex items-center gap-4 rounded-2xl border border-border bg-card p-3 shadow-card active:scale-[0.99]"
               >
                 <img
                   src={MATERIAL_IMAGE[m]}

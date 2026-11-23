@@ -1,19 +1,24 @@
 import { useCanGoBack, useNavigate, useRouter } from "@tanstack/react-router";
 import { ChevronLeft, WifiOff } from "lucide-react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { useApp } from "@/lib/remake/store";
 import { cn } from "@/lib/utils";
 
-/** Full-height app screen: fixed header, scrolling body, optional sticky footer / tab bar. */
+/**
+ * Full-height app screen: fixed header, scrolling body, optional sticky footer / tab bar.
+ * On wider screens the content centres in a readable column; `wide` gives dashboards more room.
+ */
 export function Screen({
   children,
   className,
   animate = true,
+  wide = false,
 }: {
   children: ReactNode;
   className?: string;
   animate?: boolean;
+  wide?: boolean;
 }) {
   return (
     <div
@@ -22,6 +27,7 @@ export function Screen({
         animate && "animate-screen-in",
         className,
       )}
+      style={{ "--screen-max": wide ? "76rem" : "48rem" } as CSSProperties}
     >
       <OfflineBanner />
       {children}
@@ -83,9 +89,12 @@ export function ScreenHeader({
 }) {
   return (
     <header
-      className={cn("relative z-10 flex shrink-0 items-center gap-3 px-5 pb-3 pt-safe", className)}
+      className={cn(
+        "relative z-10 flex shrink-0 items-center gap-3 px-screen pb-3 pt-safe md:pb-4 md:pt-7",
+        className,
+      )}
     >
-      <div className="flex min-h-11 w-11 items-center">
+      <div className={cn("flex min-h-11 w-11 items-center", !back && "md:hidden")}>
         {back &&
           (onBack ? (
             <button
@@ -100,18 +109,37 @@ export function ScreenHeader({
             <BackButton {...(fallback ? { fallback } : {})} />
           ))}
       </div>
-      <div className="min-w-0 flex-1 text-center">
-        {title && <h1 className="truncate text-[17px] font-semibold">{title}</h1>}
-        {subtitle && <p className="truncate text-xs text-muted-foreground">{subtitle}</p>}
+      <div className="min-w-0 flex-1 text-center md:text-left">
+        {title && (
+          <h1 className="truncate text-[17px] font-semibold md:text-[26px] md:leading-tight">{title}</h1>
+        )}
+        {subtitle && (
+          <p className="truncate text-xs text-muted-foreground md:mt-0.5 md:text-sm">{subtitle}</p>
+        )}
       </div>
-      <div className="flex min-h-11 w-11 items-center justify-end">{right}</div>
+      <div className="flex min-h-11 w-11 items-center justify-end md:w-auto">{right}</div>
     </header>
   );
 }
 
-export function ScreenBody({ children, className }: { children: ReactNode; className?: string }) {
+export function ScreenBody({
+  children,
+  className,
+  flush = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  /** Edge-to-edge on phones (e.g. a full-bleed photo); still centred on wider screens. */
+  flush?: boolean;
+}) {
   return (
-    <main className={cn("no-scrollbar min-h-0 flex-1 overflow-y-auto px-5 pb-6", className)}>
+    <main
+      className={cn(
+        "no-scrollbar min-h-0 flex-1 overflow-y-auto pb-6 md:pb-10",
+        flush ? "px-screen-md" : "px-screen",
+        className,
+      )}
+    >
       {children}
     </main>
   );
@@ -127,7 +155,7 @@ export function ScreenFooter({
   return (
     <div
       className={cn(
-        "shrink-0 space-y-3 border-t border-border/60 bg-background/95 px-5 pb-safe pt-3 backdrop-blur",
+        "shrink-0 space-y-3 border-t border-border bg-card/95 px-screen pb-safe pt-3 backdrop-blur md:pb-4 md:pt-4",
         className,
       )}
     >
@@ -139,7 +167,7 @@ export function ScreenFooter({
 /** Thin step progress bar for multi-step flows. */
 export function FlowProgress({ value, total }: { value: number; total: number }) {
   return (
-    <div className="flex gap-1.5 px-5 pb-2" aria-label={`Step ${value} of ${total}`}>
+    <div className="flex gap-1.5 px-screen pb-2" aria-label={`Step ${value} of ${total}`}>
       {Array.from({ length: total }, (_, i) => (
         <span
           key={i}

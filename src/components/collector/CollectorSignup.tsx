@@ -239,7 +239,7 @@ export function CollectorSignup({
               value={a.image}
               onChange={(img) => set("image", img)}
             />
-            <div className="mt-6 divide-y divide-border rounded-3xl bg-card px-4 text-sm shadow-card">
+            <div className="mt-6 divide-y divide-border rounded-2xl border border-border bg-card px-4 text-sm shadow-card">
               <Row label="Type" value={COLLECTOR_CATEGORY_LABEL[a.category]} />
               <Row label="Name" value={a.fullName} />
               {a.organisation && <Row label="Business" value={a.organisation} />}

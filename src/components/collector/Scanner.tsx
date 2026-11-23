@@ -227,7 +227,7 @@ export function CollectorScanner({
 
       <div ref={resultRef} className="scroll-mt-4">
         {info && status && !justConfirmed && (
-          <section aria-label="Scan result" className="mt-6 animate-fade-up rounded-3xl bg-card p-4 shadow-card">
+          <section aria-label="Scan result" className="mt-6 animate-fade-up rounded-2xl border border-border bg-card p-4 shadow-card">
             <div className={cn("flex gap-3 rounded-2xl p-3", info.tone)}>
               <info.icon className="size-6 shrink-0" />
               <div>
@@ -265,7 +265,7 @@ export function CollectorScanner({
         )}
 
         {justConfirmed && pickup && (
-          <section aria-label="Collection confirmed" className="mt-6 animate-fade-up rounded-3xl bg-card p-5 text-center shadow-card">
+          <section aria-label="Collection confirmed" className="mt-6 animate-fade-up rounded-2xl border border-border bg-card p-5 text-center shadow-card">
             <span className="mx-auto grid size-16 animate-pop place-items-center rounded-full bg-primary text-primary-foreground">
               <CheckCircle2 className="size-8" />
             </span>

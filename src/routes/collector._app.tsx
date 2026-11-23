@@ -1,5 +1,6 @@
 import { createFileRoute, Navigate, Outlet } from "@tanstack/react-router";
 
+import { CollectorShell } from "@/components/collector/CollectorShell";
 import { useCollector } from "@/components/collector/ui";
 import { useApp } from "@/lib/remake/store";
 
@@ -13,5 +14,9 @@ function CollectorLayout() {
   const me = useCollector();
   if (!account) return <Navigate to="/collector" replace />;
   if (!me) return <Navigate to="/collector/status" replace />;
-  return <Outlet />;
+  return (
+    <CollectorShell>
+      <Outlet />
+    </CollectorShell>
+  );
 }

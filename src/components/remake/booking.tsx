@@ -422,7 +422,7 @@ export function SummaryStep<S extends string>({
           className="mt-5 h-40 w-full rounded-3xl object-cover"
         />
       )}
-      <div className="mt-5 divide-y divide-border rounded-3xl bg-card px-4 shadow-card">
+      <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card px-4 shadow-card">
         <SummaryRow
           label="Waste"
           value={material ? MATERIALS[material].name : "—"}

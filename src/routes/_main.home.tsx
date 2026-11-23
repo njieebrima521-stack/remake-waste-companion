@@ -1,15 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDownLeft, ArrowUpRight, Bell, BookOpen, Gift, ScanLine, Truck } from "lucide-react";
+import { format } from "date-fns";
+import { ArrowDownLeft, ArrowUpRight, Bell, BookOpen, CalendarClock, Gift, Leaf, Recycle, ScanLine, Truck } from "lucide-react";
 
 import { CoinIcon } from "@/components/remake/CoinIcon";
 import { PickupCard } from "@/components/remake/PickupCard";
 import { BottomNav } from "@/components/remake/BottomNav";
-import { Screen } from "@/components/remake/Screen";
-import { SectionTitle } from "@/components/remake/bits";
+import { PageHeader, Panel, StatCard } from "@/components/remake/panels";
+import { Screen, ScreenBody } from "@/components/remake/Screen";
 import { WalletCard } from "@/components/remake/WalletCard";
-import { ago, coins } from "@/lib/remake/format";
+import { MATERIALS, STATUS_LABEL } from "@/lib/remake/data";
+import { ago, coins, dayLabel } from "@/lib/remake/format";
 import { pageHead } from "@/lib/remake/head";
-import { isActive, isUpcoming, residentPickups } from "@/lib/remake/logic";
+import { isActive, isUpcoming, residentPickups, walletSummary } from "@/lib/remake/logic";
 import { useApp } from "@/lib/remake/store";
 import { cn } from "@/lib/utils";
 
@@ -42,103 +44,140 @@ function Home() {
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
 
+  const next = pickups.find(isUpcoming) ?? active;
+  const w = walletSummary(tx);
+  const first = user.name.split(" ")[0] ?? user.name;
+
   return (
-    <Screen animate={false}>
-      <main className="no-scrollbar min-h-0 flex-1 overflow-y-auto pb-6">
-        <div className="rounded-b-[2.5rem] bg-primary px-5 pb-28 pt-safe text-primary-foreground">
-          <div className="flex items-center justify-between pt-2">
-            <div>
-              <p className="text-[15px] opacity-90">{greet} 👋</p>
-              <p className="font-display text-2xl font-semibold">{user.name}</p>
-            </div>
-            <Link
-              to="/notifications"
-              aria-label={`Notifications${unread ? `, ${unread} unread` : ""}`}
-              className="relative grid size-12 place-items-center rounded-full bg-card text-foreground active:scale-95"
-            >
-              <Bell className="size-6" />
-              {unread > 0 && (
-                <span className="absolute right-2.5 top-2.5 grid size-4 place-items-center rounded-full bg-destructive text-[9px] font-bold text-destructive-foreground ring-2 ring-card">
-                  {unread}
-                </span>
-              )}
-            </Link>
-          </div>
+    <Screen animate={false} wide>
+      <ScreenBody className="pt-safe md:pt-8">
+        <div className="flex items-start justify-between gap-4">
+          <PageHeader
+            className="mb-5 md:mb-7"
+            eyebrow={format(new Date(), "EEEE d MMMM")}
+            title={
+              <>
+                {greet}, {first} 👋
+              </>
+            }
+            description="Request a collection, follow your pickup and spend your Green Coins."
+          />
+          <Link
+            to="/notifications"
+            aria-label={`Notifications${unread ? `, ${unread} unread` : ""}`}
+            className="relative mt-1 grid size-11 shrink-0 place-items-center rounded-full border border-border bg-card active:scale-95 md:hidden"
+          >
+            <Bell className="size-5" />
+            {unread > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full bg-destructive px-1 text-[10px] font-bold text-destructive-foreground">
+                {unread}
+              </span>
+            )}
+          </Link>
         </div>
 
-        <div className="-mt-24 px-5">
+        <div className="grid gap-4 lg:grid-cols-[1.55fr_1fr]">
+          <section className="relative overflow-hidden rounded-2xl bg-gradient-category p-5 text-primary-foreground shadow-card md:p-6">
+            <Leaf className="pointer-events-none absolute -right-8 -top-8 size-44 opacity-10" />
+            <Link to="/collect" className="relative flex items-center gap-4 active:scale-[0.99]">
+              <div className="flex-1">
+                <p className="font-display text-xl font-semibold leading-snug">Have waste to hand over?</p>
+                <p className="mt-1 text-sm opacity-85">Book a collector to your gate in under a minute.</p>
+              </div>
+              <span className="grid size-12 shrink-0 place-items-center rounded-full bg-card text-primary-deep">
+                <ArrowUpRight className="size-6" />
+              </span>
+            </Link>
+            <div className="relative mt-5 grid grid-cols-4 gap-2 sm:gap-3">
+              {quick.map((q) => (
+                <Link
+                  key={q.to}
+                  to={q.to}
+                  className="group flex flex-col items-center gap-2 rounded-2xl bg-card px-1.5 py-3 text-center text-foreground transition hover:-translate-y-0.5 hover:shadow-card active:scale-95 sm:p-4"
+                >
+                  <span className="grid size-11 place-items-center rounded-full bg-primary-soft text-primary-deep transition-colors group-hover:bg-primary group-hover:text-primary-foreground sm:size-12">
+                    <q.icon className="size-5" />
+                  </span>
+                  <span className="text-[11px] font-semibold leading-tight sm:text-sm">{q.label}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
           <WalletCard />
+        </div>
 
-          <div className="mt-6 grid grid-cols-4 gap-2">
-            {quick.map((q) => (
-              <Link key={q.to} to={q.to} className="flex flex-col items-center gap-2 text-center active:scale-95">
-                <span className="grid size-16 place-items-center rounded-3xl bg-primary-soft text-primary-deep">
-                  <q.icon className="size-7" />
-                </span>
-                <span className="text-xs font-medium leading-tight">{q.label}</span>
-              </Link>
-            ))}
-          </div>
+        <div className="mt-4 grid grid-cols-2 gap-3 md:gap-4 xl:grid-cols-4">
+          <StatCard
+            label="Next collection"
+            value={next ? dayLabel(next.date) : "Not booked"}
+            sub={next ? next.slot : "Request one when you're ready"}
+            icon={CalendarClock}
+            tone="brand"
+          />
+          <StatCard
+            label="Pickup status"
+            value={<span className="text-lg sm:text-xl">{next ? STATUS_LABEL[next.status] : "—"}</span>}
+            sub={next ? MATERIALS[next.material].name : "No active pickup"}
+            icon={Truck}
+          />
+          <StatCard label="Green Coins" value={coins(w.available)} sub={`${coins(w.pending)} pending verification`} icon={Gift} />
+          <StatCard label="Bags recycled" value={`${bags} / ${MONTH_GOAL}`} sub="Last 30 days" icon={Recycle} />
+        </div>
 
-          <Link
-            to="/collect"
-            className="mt-6 flex items-center gap-4 overflow-hidden rounded-3xl bg-gradient-category p-5 text-primary-foreground active:scale-[0.99]"
+        <div className="mt-4 grid gap-4 lg:grid-cols-[1.55fr_1fr]">
+          <Panel
+            title="Active pickup"
+            action={<Link to="/pickups" className="text-sm font-semibold text-primary-deep hover:underline">See all</Link>}
           >
-            <div className="flex-1">
-              <p className="font-display text-lg font-semibold leading-snug">Have waste to hand over?</p>
-              <p className="mt-1 text-sm opacity-85">Book a collector to your gate in under a minute.</p>
-            </div>
-            <span className="grid size-12 place-items-center rounded-full bg-card text-primary-deep">
-              <ArrowUpRight className="size-6" />
-            </span>
-          </Link>
+            {active ? (
+              <PickupCard pickup={active} progress />
+            ) : (
+              <div className="rounded-2xl border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
+                No pickups scheduled. <Link to="/collect" className="font-semibold text-primary-deep">Request one</Link>
+              </div>
+            )}
+          </Panel>
 
-          <SectionTitle action={<Link to="/pickups" className="text-sm font-medium text-muted-foreground">See all</Link>}>
-            Active pickup
-          </SectionTitle>
-          {active ? (
-            <PickupCard pickup={active} progress />
-          ) : (
-            <div className="rounded-3xl border border-dashed border-border p-5 text-center text-sm text-muted-foreground">
-              No pickups scheduled. <Link to="/collect" className="font-semibold text-primary">Request one</Link>
+          <Panel title="Recycling progress">
+            <div className="flex items-center gap-5">
+              <svg viewBox="0 0 80 80" className="size-24 shrink-0 -rotate-90">
+                <circle cx="40" cy="40" r="34" fill="none" strokeWidth="9" className="stroke-primary-soft" />
+                <circle
+                  cx="40"
+                  cy="40"
+                  r="34"
+                  fill="none"
+                  strokeWidth="9"
+                  strokeLinecap="round"
+                  className="stroke-primary transition-all duration-700"
+                  strokeDasharray={`${pct * 213.6} 213.6`}
+                />
+                <text x="40" y="46" textAnchor="middle" className="rotate-90 fill-foreground font-display text-lg font-bold" transform="rotate(90 40 40)">
+                  {Math.round(pct * 100)}%
+                </text>
+              </svg>
+              <div>
+                <p className="font-display text-2xl font-bold">
+                  {bags} <span className="text-base font-medium text-muted-foreground">/ {MONTH_GOAL} bags</span>
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">Recycled in the last 30 days. Keep going to reach your monthly goal!</p>
+              </div>
             </div>
-          )}
+          </Panel>
+        </div>
 
-          <SectionTitle>Recycling progress</SectionTitle>
-          <div className="flex items-center gap-5 rounded-3xl bg-card p-5 shadow-card">
-            <svg viewBox="0 0 80 80" className="size-24 shrink-0 -rotate-90">
-              <circle cx="40" cy="40" r="34" fill="none" strokeWidth="9" className="stroke-primary-soft" />
-              <circle
-                cx="40"
-                cy="40"
-                r="34"
-                fill="none"
-                strokeWidth="9"
-                strokeLinecap="round"
-                className="stroke-primary transition-all duration-700"
-                strokeDasharray={`${pct * 213.6} 213.6`}
-              />
-              <text x="40" y="46" textAnchor="middle" className="rotate-90 fill-foreground font-display text-lg font-bold" transform="rotate(90 40 40)">
-                {Math.round(pct * 100)}%
-              </text>
-            </svg>
-            <div>
-              <p className="font-display text-2xl font-bold">
-                {bags} <span className="text-base font-medium text-muted-foreground">/ {MONTH_GOAL} bags</span>
-              </p>
-              <p className="mt-1 text-sm text-muted-foreground">Recycled in the last 30 days. Keep going to reach your monthly goal!</p>
-            </div>
-          </div>
-
-          <SectionTitle action={<Link to="/wallet" className="text-sm font-medium text-muted-foreground">See all</Link>}>
-            Recent activity
-          </SectionTitle>
-          <div className="space-y-2.5">
+        <Panel
+          className="mt-4"
+          title="Recent activity"
+          action={<Link to="/wallet" className="text-sm font-semibold text-primary-deep hover:underline">See all</Link>}
+          bodyClassName="pt-1 sm:pt-1"
+        >
+          <ul className="divide-y divide-border">
             {tx.slice(0, 4).map((t) => (
-              <div key={t.id} className="flex items-center gap-3 rounded-3xl bg-card p-3.5 shadow-card">
+              <li key={t.id} className="flex items-center gap-3 py-3">
                 <span
                   className={cn(
-                    "grid size-11 place-items-center rounded-2xl",
+                    "grid size-10 shrink-0 place-items-center rounded-xl",
                     t.type === "redeem" ? "bg-coin-soft text-warning-foreground" : "bg-primary-soft text-primary-deep",
                   )}
                 >
@@ -155,11 +194,11 @@ function Home() {
                   {t.type === "redeem" ? "−" : "+"}
                   {coins(t.amount)} <CoinIcon className="size-4 text-[8px]" />
                 </span>
-              </div>
+              </li>
             ))}
-          </div>
-        </div>
-      </main>
+          </ul>
+        </Panel>
+      </ScreenBody>
       <BottomNav />
     </Screen>
   );

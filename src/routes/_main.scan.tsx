@@ -272,7 +272,7 @@ function Scan() {
               {recyclableTypes.map((m, i) => {
                 const Icon = MATERIAL_ICON[m];
                 return (
-                  <div key={m} className="overflow-hidden rounded-3xl bg-card shadow-card">
+                  <div key={m} className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
                     <img src={MATERIAL_IMAGE[m]} alt={MATERIALS[m].name} className="h-24 w-full object-cover" />
                     <div className="p-3">
                       <p className="flex items-center gap-1.5 font-semibold"><Icon className="size-4 text-primary" /> Bag {i + 1}</p>

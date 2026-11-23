@@ -114,7 +114,7 @@ function Verify() {
           </li>
         </ol>
 
-        <section className="mt-4 flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card">
+        <section className="mt-4 flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card">
           <MaterialBubble material={p.material} />
           <div className="min-w-0">
             <p className="truncate font-semibold">{requesterName(p)}</p>

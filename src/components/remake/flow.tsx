@@ -100,7 +100,7 @@ export function CameraView({
   scenes?: Exclude<SceneId, "upload">[];
 }) {
   return (
-    <div className="relative flex h-full flex-col bg-camera text-camera-foreground">
+    <div className="relative flex h-full flex-col bg-camera text-camera-foreground md:mx-auto md:my-6 md:h-[calc(100%-3rem)] md:w-full md:max-w-xl md:overflow-hidden md:rounded-3xl">
       <div className="relative min-h-0 flex-1 overflow-hidden">
         <img
           src={SCENE_IMAGE[scene]}

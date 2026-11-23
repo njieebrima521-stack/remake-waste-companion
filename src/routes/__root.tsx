@@ -4,10 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
+import { CalendarClock, Coins, QrCode, Recycle, Truck } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -84,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Poppins:wght@500;600;700;800&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/manifest.webmanifest" },
@@ -112,15 +114,49 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-/** The phone-sized app frame. Full screen on phones; a centred device on larger screens. */
-function AppFrame({ children }: { children: ReactNode }) {
+const POINTS = [
+  { icon: Truck, text: "Book collection for recyclables or general waste" },
+  { icon: CalendarClock, text: "See when your waste will be collected" },
+  { icon: QrCode, text: "Hand over with your booking QR code" },
+  { icon: Coins, text: "Earn Green Coins once recyclables are verified" },
+];
+
+/**
+ * Frame for screens outside the signed-in area (onboarding, sign-in, sign-up, collector status).
+ * Full screen on phones; on wider screens a brand panel sits beside a centred card.
+ */
+function PublicFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-dvh w-full items-center justify-center md:p-6">
-      <div
-        id="app-frame"
-        className="relative h-full w-full max-w-[440px] overflow-hidden bg-background md:h-[min(920px,100%)] md:rounded-[2.75rem] md:border-[10px] md:border-ink md:shadow-frame"
-      >
-        {children}
+    <div className="flex h-dvh w-full bg-background">
+      <aside className="relative hidden w-[42%] max-w-[560px] shrink-0 flex-col justify-between overflow-hidden bg-gradient-category p-10 text-primary-foreground lg:flex">
+        <Recycle className="pointer-events-none absolute -bottom-16 -right-16 size-80 opacity-10" />
+        <div className="flex items-center gap-2 font-display text-2xl font-bold">
+          <span className="grid size-10 place-items-center rounded-xl bg-primary-foreground/15">
+            <Recycle className="size-5" strokeWidth={2.4} />
+          </span>
+          Remake
+        </div>
+        <div>
+          <h2 className="max-w-md text-[32px] font-semibold leading-tight">
+            Cleaner neighbourhoods, one pickup at a time.
+          </h2>
+          <ul className="mt-8 space-y-4">
+            {POINTS.map((p) => (
+              <li key={p.text} className="flex items-center gap-3 text-[15px]">
+                <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary-foreground/15">
+                  <p.icon className="size-5" />
+                </span>
+                {p.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p className="text-sm opacity-75">Demo · sample data only, saved in this browser.</p>
+      </aside>
+      <div className="flex min-w-0 flex-1 items-center justify-center md:p-6">
+        <div className="relative h-full w-full overflow-hidden bg-background md:h-[min(880px,100%)] md:max-w-[480px] md:rounded-3xl md:border md:border-border md:bg-card md:shadow-card">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -129,6 +165,9 @@ function AppFrame({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const hydrated = useApp((s) => s.hydrated);
+  const inApp = useRouterState({
+    select: (r) => r.matches.some((m) => m.routeId === "/_main" || m.routeId === "/collector/_app"),
+  });
 
   useEffect(() => {
     hydrateStore();
@@ -136,10 +175,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppFrame>
-        {/* Saved demo state lives on the device, so screens render once it has loaded. */}
-        {hydrated ? <Outlet /> : <SplashMark />}
-      </AppFrame>
+      {/* Saved demo state lives on the device, so screens render once it has loaded. */}
+      {!hydrated ? (
+        <div className="h-dvh w-full">
+          <SplashMark />
+        </div>
+      ) : inApp ? (
+        <Outlet />
+      ) : (
+        <PublicFrame>
+          <Outlet />
+        </PublicFrame>
+      )}
       <Toaster position="top-center" richColors closeButton={false} />
     </QueryClientProvider>
   );

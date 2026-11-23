@@ -6,6 +6,7 @@ import {
   Home,
   Inbox,
   LayoutDashboard,
+  PackageCheck,
   Route as RouteIcon,
   ScanLine,
   Send,
@@ -145,7 +146,7 @@ export function RequestCard({ pickup, me, compact }: { pickup: Pickup; me: Colle
     <Link
       to="/collector/requests/$id"
       params={{ id: pickup.id }}
-      className="flex gap-3 rounded-3xl bg-card p-3.5 shadow-card transition active:scale-[0.99]"
+      className="flex gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-card transition active:scale-[0.99]"
     >
       <MaterialBubble material={pickup.material} />
       <div className="min-w-0 flex-1">
@@ -284,13 +285,35 @@ const NAV: Record<CollectorCategory, Tab[]> = {
   ],
 };
 
+/** Desktop sidebar: the bottom-nav sections plus the role's other existing screens. */
+export const SIDEBAR_NAV: Record<CollectorCategory, { to: Tab["to"] | "/collector/verify"; label: string; icon: LucideIcon }[]> = {
+  recycling: [
+    NAV.recycling[0]!,
+    NAV.recycling[1]!,
+    NAV.recycling[2]!,
+    { to: "/collector/verify", label: "Material received", icon: PackageCheck },
+    { to: "/collector/scan", label: "Scan booking QR", icon: ScanLine },
+    NAV.recycling[3]!,
+    NAV.recycling[4]!,
+  ],
+  general: [
+    NAV.general[0]!,
+    NAV.general[1]!,
+    NAV.general[2]!,
+    { to: "/collector/scan", label: "Scan booking QR", icon: ScanLine },
+    NAV.general[3]!,
+    NAV.general[4]!,
+  ],
+  independent: NAV.independent,
+};
+
 export function CollectorNav() {
   const me = useMe();
   const { pathname } = useLocation();
   const board = useBoard(me);
   const badge = board.incoming.length;
   return (
-    <nav className="relative z-20 shrink-0 rounded-t-3xl bg-card px-1 pb-safe pt-1 shadow-nav" aria-label="Collector">
+    <nav className="relative z-20 shrink-0 rounded-t-3xl bg-card px-1 pb-safe pt-1 shadow-nav md:hidden" aria-label="Collector">
       <div className="flex items-end">
         {NAV[me.category].map((t) => {
           const active = pathname === t.to || pathname.startsWith(`${t.to}/`);

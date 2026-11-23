@@ -99,7 +99,7 @@ function PickupDetail() {
         fallback="/pickups"
       />
       <ScreenBody>
-        <div className="rounded-3xl bg-card p-4 shadow-card">
+        <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
           <div className="flex items-center gap-3">
             <span
               className={cn(
@@ -154,7 +154,7 @@ function PickupDetail() {
         {awaitingCollection && <CollectionQr pickup={pickup} className="mt-4" />}
 
         <h2 className="mb-3 mt-7 text-[17px] font-semibold">Tracking</h2>
-        <ol className="rounded-3xl bg-card p-4 shadow-card">
+        <ol className="rounded-2xl border border-border bg-card p-4 shadow-card">
           {steps.map((s, i) => (
             <li key={s.key} className="relative flex gap-3 pb-5 last:pb-0">
               {i < steps.length - 1 && (
@@ -213,7 +213,7 @@ function PickupDetail() {
 
         <h2 className="mb-3 mt-7 text-[17px] font-semibold">Collector</h2>
         {collector ? (
-          <div className="rounded-3xl bg-card p-4 shadow-card">
+          <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
             <div className="flex items-center gap-3">
               <CollectorAvatar collector={collector} />
               <div className="min-w-0 flex-1">
@@ -259,7 +259,7 @@ function PickupDetail() {
             className="mb-3 h-40 w-full rounded-3xl object-cover"
           />
         )}
-        <div className="divide-y divide-border rounded-3xl bg-card px-4 shadow-card">
+        <div className="divide-y divide-border rounded-2xl border border-border bg-card px-4 shadow-card">
           <SummaryRow
             label="Address"
             value={

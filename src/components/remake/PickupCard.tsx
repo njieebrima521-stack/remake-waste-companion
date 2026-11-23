@@ -17,7 +17,7 @@ export function PickupCard({ pickup, progress = false }: { pickup: Pickup; progr
     <Link
       to="/pickups/$id"
       params={{ id: pickup.id }}
-      className="block rounded-3xl bg-card p-4 shadow-card transition active:scale-[0.99]"
+      className="block rounded-2xl border border-border bg-card p-4 shadow-card transition active:scale-[0.99]"
     >
       <div className="flex items-center gap-3">
         <span

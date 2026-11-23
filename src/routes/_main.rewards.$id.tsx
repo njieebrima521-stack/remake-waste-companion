@@ -63,7 +63,7 @@ function RewardDetail() {
 
         <p className="mt-5 text-[15px] leading-relaxed">{reward.description}</p>
 
-        <div className="mt-5 divide-y divide-border rounded-3xl bg-card shadow-card">
+        <div className="mt-5 divide-y divide-border rounded-2xl border border-border bg-card shadow-card">
           <div className="flex items-center gap-3 p-4">
             <Truck className="size-5 text-primary" />
             <div>
@@ -80,7 +80,7 @@ function RewardDetail() {
           </div>
         </div>
 
-        <div className="mt-5 rounded-3xl bg-card p-4 shadow-card">
+        <div className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-card">
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Your available coins</span>
             <span className="font-semibold tabular-nums">{coins(available)}</span>

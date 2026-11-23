@@ -13,3 +13,12 @@
 - [x] Material verification for recycling companies, separate from collection
 - [x] History + performance charts, notifications, profile + edit (ID and status locked)
 - [x] Tests for collector rules; resident app checked in the browser
+
+# Roadmap — UI redesign (older Remake_GG look)
+
+- [ ] Desktop app shell: left sidebar (role-specific), compact top header; mobile keeps bottom nav
+- [ ] Older typography + white bordered panels, stat cards, left-aligned page headings on desktop
+- [ ] Sign-in / sign-up pages: split brand panel on desktop
+- [ ] Resident home redesigned around: request collection, next pickup, status, rewards
+- [ ] Collector dashboards (3 types) redesigned with stat cards + next action
+- [ ] Verify all routes, tests, both layouts

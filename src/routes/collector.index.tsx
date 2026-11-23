@@ -122,7 +122,7 @@ function CollectorEntry() {
             <h2 className="text-[17px] font-semibold">Sample accounts</h2>
             <span className="text-xs text-muted-foreground">Password {DEMO_COLLECTOR_PASSWORD}</span>
           </div>
-          <div className="divide-y divide-border overflow-hidden rounded-3xl bg-card shadow-card">
+          <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-card">
             {SAMPLE_ACCOUNTS.map((a) => (
               <SampleRow key={a.key} account={a} onPick={() => signIn(a.phone)} />
             ))}

@@ -72,7 +72,7 @@ function Routes() {
             const stops = g.pickupIds.map((id) => state.pickups.find((p) => p.id === id)!);
             const materials = Array.from(new Set(stops.map((p) => MATERIALS[p.material].short)));
             return (
-              <section key={g.key} className="rounded-3xl bg-card p-4 shadow-card">
+              <section key={g.key} className="rounded-2xl border border-border bg-card p-4 shadow-card">
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
                     <p className="font-semibold">

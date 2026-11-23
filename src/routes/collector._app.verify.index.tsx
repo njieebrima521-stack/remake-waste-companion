@@ -64,7 +64,7 @@ function Item({ p }: { p: Pickup }) {
     <Link
       to={pending ? "/collector/verify/$id" : "/collector/requests/$id"}
       params={{ id: p.id }}
-      className="flex items-center gap-3 rounded-3xl bg-card p-3.5 shadow-card active:scale-[0.99]"
+      className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-card active:scale-[0.99]"
     >
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold">{requesterName(p)}</p>

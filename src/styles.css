@@ -9,14 +9,14 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * REMAKE design system — mobile app.
- * Brand: vivid Remake green, ink-navy wallet card, mint surfaces, off-white canvas.
- * Display type: Poppins. Body type: Figtree.
+ * REMAKE design system — follows the older Remake_GG dashboard look.
+ * Brand: Remake green, dark forest, white panels, light mint surfaces.
+ * Display type: Poppins. Body type: DM Sans.
  */
 
 @theme inline {
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 6px);
   --radius-md: calc(var(--radius) - 4px);
@@ -93,10 +93,10 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.875rem;
 
   /* Canvas & text */
-  --background: oklch(0.985 0.003 260);
+  --background: oklch(0.982 0.004 160);
   --foreground: oklch(0.22 0.02 280);
   --canvas: oklch(0.94 0.02 152);
   --card: oklch(1 0 0);
@@ -160,7 +160,7 @@
   --chart-4: oklch(0.42 0.11 150);
   --chart-5: oklch(0.6 0.21 27);
 
-  --sidebar: oklch(0.985 0.003 260);
+  --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.22 0.02 280);
   --sidebar-primary: oklch(0.71 0.205 146);
   --sidebar-primary-foreground: oklch(1 0 0);
@@ -187,11 +187,11 @@
   }
 
   html {
-    background-color: var(--color-canvas);
+    background-color: var(--color-background);
   }
 
   body {
-    background-color: var(--color-canvas);
+    background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -235,6 +235,20 @@
 }
 @utility shadow-frame {
   box-shadow: var(--shadow-frame);
+}
+/* Screen gutters: 1.25rem on phones; on wider screens content centres at --screen-max. */
+@utility px-screen {
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: max(2rem, calc((100% - var(--screen-max, 48rem)) / 2));
+  }
+}
+/* Same as px-screen, but edge-to-edge on phones (for full-bleed images). */
+@utility px-screen-md {
+  padding-inline: 0;
+  @media (width >= 48rem) {
+    padding-inline: max(2rem, calc((100% - var(--screen-max, 48rem)) / 2));
+  }
 }
 @utility pt-safe {
   padding-top: max(env(safe-area-inset-top), 0.75rem);

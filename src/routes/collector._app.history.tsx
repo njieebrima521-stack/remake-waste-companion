@@ -54,7 +54,7 @@ function History() {
         </div>
 
         <SectionHead title="Bags collected per week" />
-        <div className="rounded-3xl bg-card p-4 shadow-card">
+        <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
           <div className="flex h-36 items-end gap-2">
             {stats.weekly.map((w) => (
               <div key={w.label} className="flex flex-1 flex-col items-center gap-1.5">
@@ -70,7 +70,7 @@ function History() {
         </div>
 
         <SectionHead title="Material categories" />
-        <div className="space-y-2.5 rounded-3xl bg-card p-4 shadow-card">
+        <div className="space-y-2.5 rounded-2xl border border-border bg-card p-4 shadow-card">
           {stats.byMaterial.length === 0 && <p className="text-sm text-muted-foreground">No collections yet.</p>}
           {stats.byMaterial.map(([m, n]) => (
             <div key={m} className="flex items-center gap-3">
@@ -116,7 +116,7 @@ function History() {
               key={i.pickup.id + i.outcome}
               to="/collector/requests/$id"
               params={{ id: i.pickup.id }}
-              className="flex gap-3 rounded-3xl bg-card p-3.5 shadow-card active:scale-[0.99]"
+              className="flex gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-card active:scale-[0.99]"
             >
               <MaterialBubble material={i.pickup.material} />
               <div className="min-w-0 flex-1">

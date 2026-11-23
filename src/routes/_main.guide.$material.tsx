@@ -45,7 +45,7 @@ function GuideDetail() {
 
   return (
     <Screen key={material}>
-      <ScreenBody className="px-0">
+      <ScreenBody flush>
         <div className="relative h-64 overflow-hidden">
           <img src={MATERIAL_IMAGE[material]} alt={m.name} className="size-full object-cover" />
           <div className="absolute inset-0 bg-photo-fade" />
@@ -59,7 +59,7 @@ function GuideDetail() {
         </div>
 
         <div className="px-5">
-          <div className="-mt-4 relative flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card">
+          <div className="-mt-4 relative flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card">
             <CoinIcon className="size-9 text-sm" />
             <p className="text-sm">
               {rate > 0 ? (
@@ -196,7 +196,7 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="mt-5 rounded-3xl bg-card p-5 shadow-card">
+    <section className="mt-5 rounded-2xl border border-border bg-card p-5 shadow-card">
       <h2 className="mb-3 flex items-center gap-2 text-[17px] font-semibold">
         {icon} {title}
       </h2>

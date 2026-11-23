@@ -132,7 +132,7 @@ function EditProfile() {
             </div>
             {errors["areas"] && <p className="mt-1.5 px-2 text-xs font-medium text-destructive">{errors["areas"]}</p>}
           </div>
-          <label className="flex items-center justify-between rounded-3xl bg-card p-4 shadow-card">
+          <label className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 shadow-card">
             <span>
               <span className="block font-medium">Available for new requests</span>
               <span className="block text-xs text-muted-foreground">Off duty hides open requests from you.</span>

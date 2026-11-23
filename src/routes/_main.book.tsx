@@ -187,7 +187,7 @@ function Book() {
               );
             })}
             {scanned && draft.material && (
-              <div className="mt-5 rounded-3xl bg-card p-4 shadow-card">
+              <div className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-card">
                 <p className="text-sm font-medium">Items in this bag</p>
                 <ul className="mt-2 space-y-1 text-[15px]">
                   {draft.items

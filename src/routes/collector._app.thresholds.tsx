@@ -24,7 +24,7 @@ function Thresholds() {
         <p className="mt-3 text-sm text-muted-foreground">
           Requests below their material's minimum stay visible as accumulation requests until enough waste is ready.
         </p>
-        <div className="mt-4 divide-y divide-border rounded-3xl bg-card shadow-card">
+        <div className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card shadow-card">
           {GUIDE_ORDER.filter((m) => m !== "special").map((m) => (
             <div key={m} className="flex items-center gap-3 px-4 py-3">
               <MaterialBubble material={m} className="size-10 rounded-xl" />

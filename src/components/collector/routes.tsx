@@ -31,7 +31,7 @@ export function RouteCard({ route, state }: { route: CollectionRoute; state: App
     <Link
       to="/collector/routes/$id"
       params={{ id: route.id }}
-      className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card active:scale-[0.99]"
+      className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card active:scale-[0.99]"
     >
       <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-ink text-ink-foreground">
         <RouteIcon className="size-5" />

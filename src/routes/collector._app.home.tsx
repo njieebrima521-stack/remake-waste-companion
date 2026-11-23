@@ -162,12 +162,12 @@ function IndependentDashboard({ me }: { me: Collector }) {
       </Button>
 
       <div className="mt-3 grid grid-cols-2 gap-3">
-        <Link to="/collector/requests" className="rounded-3xl bg-card p-4 shadow-card active:scale-[0.99]">
+        <Link to="/collector/requests" className="rounded-2xl border border-border bg-card p-4 shadow-card active:scale-[0.99]">
           <Inbox className="mb-2 size-5 text-primary-deep" />
           <p className="font-display text-2xl font-bold">{board.incoming.length}</p>
           <p className="text-xs font-medium text-muted-foreground">New job offers</p>
         </Link>
-        <div className="rounded-3xl bg-card p-4 shadow-card">
+        <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
           <PackageCheck className="mb-2 size-5 text-primary-deep" />
           <p className="font-display text-2xl font-bold">{d.stats.completed}</p>
           <p className="text-xs font-medium text-muted-foreground">Done in 30 days</p>
@@ -195,7 +195,7 @@ function Availability({ me, children }: { me: Collector; children?: React.ReactN
   const state = useWorkState();
   const available = isAvailable(state, me.id);
   return (
-    <div className="rounded-3xl bg-card p-4 shadow-card">
+    <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
       <div className="flex items-center gap-3">
         <span className="grid size-11 place-items-center rounded-2xl bg-primary-soft text-primary-deep">
           <Truck className="size-5" />
@@ -235,7 +235,7 @@ function RoutesToday({ routes, state }: { routes: CollectionRoute[]; state: AppS
             key={r.id}
             to="/collector/routes/$id"
             params={{ id: r.id }}
-            className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card active:scale-[0.99]"
+            className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card active:scale-[0.99]"
           >
             <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-ink text-ink-foreground">
               <RouteIcon className="size-5" />
@@ -265,7 +265,7 @@ function VerifyRow({ p }: { p: Pickup }) {
     <Link
       to="/collector/verify/$id"
       params={{ id: p.id }}
-      className="flex items-center gap-3 rounded-3xl bg-card p-3.5 shadow-card active:scale-[0.99]"
+      className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-card active:scale-[0.99]"
     >
       <span className="grid size-11 place-items-center rounded-2xl bg-warning-soft text-warning-foreground">
         <Scale className="size-5" />

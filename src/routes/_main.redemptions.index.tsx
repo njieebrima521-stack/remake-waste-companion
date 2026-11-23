@@ -43,7 +43,7 @@ function Redemptions() {
                   key={x.id}
                   to="/redemptions/$id"
                   params={{ id: x.id }}
-                  className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card active:scale-[0.99]"
+                  className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card active:scale-[0.99]"
                 >
                   <span className="grid size-12 place-items-center rounded-2xl bg-primary-soft text-primary-deep">
                     <Icon className="size-6" />

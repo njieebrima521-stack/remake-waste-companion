@@ -159,7 +159,7 @@ export function MenuGroup({ children, title }: { children: ReactNode; title?: st
           {title}
         </p>
       )}
-      <div className="divide-y divide-border overflow-hidden rounded-3xl bg-card shadow-card">
+      <div className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-card">
         {children}
       </div>
     </div>
@@ -180,7 +180,7 @@ export function NumberStepper({
   unit?: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-3xl bg-card p-3 shadow-card">
+    <div className="flex items-center justify-between rounded-2xl border border-border bg-card p-3 shadow-card">
       <button
         type="button"
         aria-label="Decrease"

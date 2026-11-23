@@ -130,7 +130,7 @@ function Stat({
   tone: "warning" | "primary" | "muted";
 }) {
   return (
-    <div className="rounded-3xl bg-card p-3.5 shadow-card">
+    <div className="rounded-2xl border border-border bg-card p-3.5 shadow-card">
       <span
         className={cn(
           "grid size-9 place-items-center rounded-xl",
@@ -186,7 +186,7 @@ function TxRow({ t }: { t: Transaction }) {
       </span>
     </>
   );
-  const cls = "flex items-center gap-3 rounded-3xl bg-card p-3.5 shadow-card";
+  const cls = "flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-card";
   return t.pickupId ? (
     <Link to="/pickups/$id" params={{ id: t.pickupId }} className={cls}>
       {inner}

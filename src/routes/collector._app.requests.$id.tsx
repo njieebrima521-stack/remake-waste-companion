@@ -137,7 +137,7 @@ function RequestDetail() {
           {direct && <Pill className="bg-ink text-ink-foreground">Sent to you</Pill>}
         </div>
 
-        <section className="mt-5 rounded-3xl bg-card p-4 shadow-card">
+        <section className="mt-5 rounded-2xl border border-border bg-card p-4 shadow-card">
           <div className="flex items-baseline justify-between text-sm">
             <span className="font-medium">Minimum quantity</span>
             <span className="tabular-nums text-muted-foreground">
@@ -150,7 +150,7 @@ function RequestDetail() {
           </p>
         </section>
 
-        <dl className="mt-3 divide-y divide-border rounded-3xl bg-card px-4 text-sm shadow-card">
+        <dl className="mt-3 divide-y divide-border rounded-2xl border border-border bg-card px-4 text-sm shadow-card">
           {p.institution ? (
             <>
               <Row label="Customer" value={`${p.institution.name} · ${p.institution.kind}`} />
@@ -221,7 +221,7 @@ function RequestDetail() {
         )}
 
         {(p.status === "collected" || p.status === "verified") && (
-          <section className="mt-3 rounded-3xl bg-card p-4 shadow-card">
+          <section className="mt-3 rounded-2xl border border-border bg-card p-4 shadow-card">
             <div className="flex items-center justify-between">
               <p className="font-semibold">Collection</p>
               <Pill className="bg-primary-soft text-primary-deep">Confirmed</Pill>

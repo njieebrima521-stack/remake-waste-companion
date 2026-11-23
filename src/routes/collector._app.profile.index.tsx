@@ -64,7 +64,7 @@ function Profile() {
           <p className="mt-3 text-[11px] text-ink-muted">Only Remake can change these.</p>
         </section>
 
-        <dl className="mt-4 divide-y divide-border rounded-3xl bg-card px-4 text-sm shadow-card">
+        <dl className="mt-4 divide-y divide-border rounded-2xl border border-border bg-card px-4 text-sm shadow-card">
           <Row label="Business registration no." value={me.registrationNo ?? "Not registered"} />
           <Row label="Contact" value={me.contactName} />
           <Row label="Phone" value={me.phone} />

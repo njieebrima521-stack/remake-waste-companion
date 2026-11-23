@@ -20,7 +20,7 @@ export function CollectionQr({ pickup, className }: { pickup: Pickup; className?
   return (
     <section
       aria-label="Collection QR code"
-      className={cn("rounded-3xl bg-card p-5 shadow-card", className)}
+      className={cn("rounded-2xl border border-border bg-card p-5 shadow-card", className)}
     >
       <p className="flex items-center gap-2 text-sm font-semibold text-primary-deep">
         <ScanLine className="size-4" /> Collection QR code

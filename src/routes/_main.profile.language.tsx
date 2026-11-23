@@ -23,7 +23,7 @@ function Language() {
           Choose the language you prefer for messages and support calls.
         </p>
         <div
-          className="mt-5 divide-y divide-border overflow-hidden rounded-3xl bg-card shadow-card"
+          className="mt-5 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card shadow-card"
           role="radiogroup"
         >
           {LANGUAGES.map((l) => {

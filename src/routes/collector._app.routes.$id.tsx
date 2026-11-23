@@ -62,7 +62,7 @@ function RouteDetail() {
     <Screen>
       <ScreenHeader title={route.ref} subtitle={route.name} fallback="/collector/routes" />
       <ScreenBody>
-        <section className="rounded-3xl bg-card p-4 shadow-card">
+        <section className="rounded-2xl border border-border bg-card p-4 shadow-card">
           <div className="flex items-center justify-between">
             <p className="font-semibold">{zone?.name ?? route.zone}</p>
             <Pill className={st.tone}>{st.label}</Pill>
@@ -99,7 +99,7 @@ function RouteDetail() {
             return (
               <li
                 key={s.pickupId}
-                className={cn("rounded-3xl bg-card p-4 shadow-card", i === nextIdx && !done && "ring-2 ring-primary")}
+                className={cn("rounded-2xl border border-border bg-card p-4 shadow-card", i === nextIdx && !done && "ring-2 ring-primary")}
               >
                 <div className="flex items-start gap-3">
                   <span

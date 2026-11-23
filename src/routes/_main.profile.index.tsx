@@ -77,13 +77,13 @@ function Profile() {
           </div>
         </div>
         <div className="mt-3 grid grid-cols-2 gap-3">
-          <div className="rounded-3xl bg-card p-4 shadow-card">
+          <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
             <p className="flex items-center gap-1.5 font-display text-2xl font-bold tabular-nums">
               {coins(w.available)} <CoinIcon className="size-4 text-[8px]" />
             </p>
             <p className="text-xs text-muted-foreground">Green Coins</p>
           </div>
-          <div className="rounded-3xl bg-card p-4 shadow-card">
+          <div className="rounded-2xl border border-border bg-card p-4 shadow-card">
             <p className="font-display text-2xl font-bold tabular-nums">{done}</p>
             <p className="text-xs text-muted-foreground">Pickups completed</p>
           </div>

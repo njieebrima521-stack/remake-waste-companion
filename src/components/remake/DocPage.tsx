@@ -19,7 +19,7 @@ export function DocPage({
         </p>
         <div className="mt-5 space-y-3">
           {sections.map((s, i) => (
-            <section key={s.h} className="rounded-3xl bg-card p-5 shadow-card">
+            <section key={s.h} className="rounded-2xl border border-border bg-card p-5 shadow-card">
               <h2 className="flex items-center gap-2 text-[17px] font-semibold">
                 <span className="grid size-7 place-items-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">
                   {i + 1}

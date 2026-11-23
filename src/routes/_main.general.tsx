@@ -89,7 +89,7 @@ function General() {
   if (step === "photo" && photoMode === "camera")
     return (
       <Screen animate={false}>
-        <div className="relative flex h-full flex-col bg-camera text-camera-foreground">
+        <div className="relative flex h-full flex-col bg-camera text-camera-foreground md:mx-auto md:my-6 md:h-[calc(100%-3rem)] md:w-full md:max-w-xl md:overflow-hidden md:rounded-3xl">
           <div className="relative min-h-0 flex-1 overflow-hidden">
             <img src={catGeneral} alt="Camera view" className="size-full object-cover" />
             <div className="pointer-events-none absolute inset-10 rounded-3xl border-2 border-camera-foreground/70" />

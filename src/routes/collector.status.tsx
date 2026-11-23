@@ -76,7 +76,7 @@ function Status() {
         )}
 
         <h2 className="mb-2 mt-6 text-sm font-medium">Application</h2>
-        <div className="divide-y divide-border rounded-3xl bg-card px-4 text-sm shadow-card">
+        <div className="divide-y divide-border rounded-2xl border border-border bg-card px-4 text-sm shadow-card">
           <Row label="Status" value={<VerificationStatusPill status={acc.status} />} />
           <Row label="Type" value={COLLECTOR_CATEGORY_LABEL[a.category]} />
           <Row label="Name" value={a.organisation || a.fullName} />

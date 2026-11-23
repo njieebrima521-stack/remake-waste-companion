@@ -32,7 +32,7 @@ export function BottomNav() {
   };
   return (
     <nav
-      className="relative z-20 shrink-0 rounded-t-3xl bg-card px-2 pb-safe pt-1 shadow-nav"
+      className="relative z-20 shrink-0 rounded-t-3xl bg-card px-2 pb-safe pt-1 shadow-nav md:hidden"
       aria-label="Main"
     >
       <div className="flex items-end">
